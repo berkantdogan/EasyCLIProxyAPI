@@ -53,8 +53,38 @@ const messages = {
   invalid: ['配置值无效，请检查标注字段：', 'Invalid configuration; check field: ', '設定値が無効です。確認する項目: '],
   modelHint: ['字段关闭时保留默认行为；已启用字段中的 false、0 和空列表会明确覆盖默认值。', 'Unset fields use defaults; explicit false, 0 and empty lists override defaults.', '未設定は既定動作。false、0、空のリストは既定値を明示的に上書きします。'],
 } as const;
+
+const trMessages: Partial<Record<keyof typeof messages, string>> = {
+  modelRules: 'Model kuralları',
+  connectionRouting: 'Bağlantı ve yönlendirme',
+  requestBehavior: 'İstek davranışı',
+  inherit: 'Devral / Varsayılan',
+  configure: 'Yapılandır',
+  enabled: 'Etkin',
+  disabled: 'Devre dışı',
+  options: 'Model yetenekleri ve uyumluluk seçenekleri',
+  retry: 'Ek yeniden deneme turları',
+  retryHint: '0 ek turları devre dışı bırakır; ayarlanmamış veya negatif değerler genel ayarı devralır.',
+  errors: 'İstek hata kuralları',
+  addRule: 'Kural ekle',
+  remove: 'Kaldır',
+  status: 'HTTP durumu',
+  display: 'Görünen ad',
+  context: 'Bağlam penceresi',
+  compat: 'Yukarı akış uyumluluk modunu etkinleştir',
+  image: 'Görsel oluşturma ve düzenleme uç noktalarını etkinleştir',
+  thinking: 'Düşünme yetenekleri',
+  levels: 'Desteklenen akıl yürütme seviyeleri',
+  min: 'Minimum düşünme bütçesi',
+  max: 'Maksimum düşünme bütçesi',
+  promptCache: 'Otomatik prompt_cache_key türet',
+  noCloak: 'Codex istek gizlemesini devre dışı bırak',
+  fingerprint: 'İstek parmak izi',
+  caller: 'Arayan parmak izini koru',
+};
+
 export type ProviderTemplateMessage = keyof typeof messages;
 export function providerText(key: ProviderTemplateMessage, locale: AppLocale = getCurrentLocale()): string {
-  const value = messages[key][locale === 'en' ? 1 : locale === 'ja' ? 2 : 0];
+  const value = locale === 'tr' ? (trMessages[key] ?? messages[key][1]) : messages[key][locale === 'en' ? 1 : locale === 'ja' ? 2 : 0];
   return locale === 'zh-TW' ? createTraditionalMessages({ text: value }).text : value;
 }

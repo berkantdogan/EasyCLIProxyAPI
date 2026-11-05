@@ -14,3 +14,10 @@ agent_docs/
 *.log
 *.tmp
 misc/
+
+/EasyCLIProxyAPI.exe
+/config.toml
+/agent-usage/
+/oauth/
+/usage-records/
+package-lock.json

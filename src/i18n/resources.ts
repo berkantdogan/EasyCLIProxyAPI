@@ -4,9 +4,10 @@ import { themeDiyZhTW } from './themeDiy';
 import { authFileTagsZhTW } from './authFileList';
 import { jaOverrides } from './ja';
 import { en } from './locales/en';
+import { tr } from './locales/tr';
 import { zhCN, type MessageKey } from './locales/zh-CN';
 
-export { en, zhCN };
+export { en, tr, zhCN };
 export type { MessageKey };
 export type MessageVariables = Record<string, string | number>;
 

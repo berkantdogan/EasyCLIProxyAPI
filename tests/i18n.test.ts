@@ -1,12 +1,12 @@
 import { describe, expect, it } from 'bun:test';
 import { languageOptions, normalizeLocale, supportedLocales, translate } from '../src/i18n';
-import { en, ja, zhCN, zhTW, type MessageKey } from '../src/i18n/resources';
+import { en, ja, tr, zhCN, zhTW, type MessageKey } from '../src/i18n/resources';
 import { jaOverrides } from '../src/i18n/ja';
 import { pluginConfigText } from '../src/i18n/pluginConfig';
 
 describe('i18n', () => {
   it('localizes credential tag controls in every language', () => {
-    for (const [locale, label] of [['en', 'Tags'], ['zh-CN', '标签'], ['zh-TW', '標籤'], ['ja', 'タグ']] as const) {
+    for (const [locale, label] of [['en', 'Tags'], ['zh-CN', '标签'], ['zh-TW', '標籤'], ['ja', 'タグ'], ['tr', 'Etiketler']] as const) {
       expect(translate(locale, 'authFiles.tags.label')).toBe(label);
       for (const key of [
         'authFiles.tags.all',
@@ -45,7 +45,7 @@ describe('i18n', () => {
   it('localizes the plugin discard confirmation in every language', () => {
     for (const [locale, cancel, confirm] of [
       ['zh-CN', '继续编辑', '放弃修改'], ['zh-TW', '繼續編輯', '放棄修改'],
-      ['en', 'Keep editing', 'Discard changes'], ['ja', '編集を続ける', '変更を破棄'],
+      ['en', 'Keep editing', 'Discard changes'], ['ja', '編集を続ける', '変更を破棄'], ['tr', 'Düzenlemeye devam et', 'Değişiklikleri at'],
     ] as const) {
       expect(pluginConfigText('keepEditing', locale)).toBe(cancel);
       expect(pluginConfigText('discard', locale)).toBe(confirm);
@@ -59,6 +59,7 @@ describe('i18n', () => {
     expect(translate('zh-TW', 'app.theme.label')).toBe('外觀模式');
     expect(translate('en', 'app.theme.system')).toBe('Auto');
     expect(translate('ja', 'app.theme.system')).toBe('自動');
+    expect(translate('tr', 'app.theme.system')).toBe('Otomatik');
   });
 
   it('uses credential-file terminology throughout both Chinese locales', () => {
@@ -91,6 +92,8 @@ describe('i18n', () => {
     expect(normalizeLocale('zh-TW')).toBe('zh-TW');
     expect(normalizeLocale('zh-Hant-HK')).toBe('zh-TW');
     expect(normalizeLocale('ja-JP')).toBe('ja');
+    expect(normalizeLocale('tr-TR')).toBe('tr');
+    expect(normalizeLocale('tr')).toBe('tr');
     expect(normalizeLocale('unsupported')).toBe('en');
   });
 
@@ -118,6 +121,7 @@ describe('i18n', () => {
       { value: 'zh-TW', nativeLabel: '繁體中文' },
       { value: 'ja', nativeLabel: '日本語' },
       { value: 'en', nativeLabel: 'English' },
+      { value: 'tr', nativeLabel: 'Türkçe' },
     ]);
   });
 
@@ -133,7 +137,7 @@ describe('i18n', () => {
     const variables = (message: string) => [...new Set(
       [...message.matchAll(/\{(\w+)\}/g)].map((match) => match[1]),
     )].sort();
-    for (const [locale, messages] of Object.entries({ en, ja, zhTW })) {
+    for (const [locale, messages] of Object.entries({ en, tr, ja, zhTW })) {
       const mismatches = (Object.keys(zhCN) as MessageKey[]).filter((key) =>
         !messages[key].trim()
         || JSON.stringify(variables(messages[key])) !== JSON.stringify(variables(zhCN[key])),

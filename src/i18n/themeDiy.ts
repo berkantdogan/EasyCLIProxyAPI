@@ -66,3 +66,20 @@ export const themeDiyJa = {
   'app.theme.diy.installHint': "生成されたテーマフォルダーを「テーマフォルダーを開く」で表示される場所に置き、再読み込みして新しいテーマを選びます。",
 };
 
+
+export const themeDiyTr = {
+  'app.theme.diy.agentTask': 'Konuşmamızda sağladığım stile veya referans görsellerine göre yüklenebilir bir EasyCLIProxyAPI özel teması oluşturun. Tercihleri ​​belirtmediysem öncelikle açık/koyu görünüm, vurgu renkleri ve arka plan görsellerini sorun. Kurallar, tam referans örneği ve JSON Şeması aşağıdadır. Örneği formatı için kullanın ve temayı tercihlerime uyacak şekilde tasarlayın.',
+  'app.theme.diy.copied': 'Kopyalandı. Bunu AI sohbetinize yapıştırın ve istediğiniz stili tanımlayın.',
+  'app.theme.diy.copy': 'Oluşturma kılavuzunu kopyala',
+  'app.theme.diy.copyFailed': 'Kopyalama başarısız oldu. Aşağıdaki kılavuzu manuel olarak seçip kopyalayın.',
+  'app.theme.diy.defaults': 'Atlanan belirteçler açık veya koyu varsayılanları kullanır. Vurguyu değiştirirken düğmeleri, anahtarları ve kenar çubuğu renklerini birlikte ayarlayın. Görünümü açık olarak ayarlamak açık koyu renkleri dönüştürmez. #RRGGBB veya #RRGGBBAA renklerini kullanın (AA opaklıktır).',
+  'app.theme.diy.deliverables': 'Teslimatlar: 1. Belirsizse temel tercihleri ​​sorun. Uygulamanın tema dizinine yazmadan önce, Temaları aç klasörünü kullanarak tam yolunu belirtmemi isteyin; Mevcut temaları tahmin etmeyin veya üzerine yazmayın. 2. Yeni bir özel klasörde UTF-8 theme.json dosyasını oluşturun. Arka plan resimlerini varlıklara/alt klasörüne yerleştirin ve yalnızca mevcut dosyalara referans verin. 3. Dosya erişimi olmadan, JSON\'un tamamını, dizin yapısını ve kaydetme talimatlarını sağlayın; kurulum talebinde bulunmayın. 4. Benzersiz bir kimlik, okunabilir kontrast ve koordineli düğmeler, anahtarlar ve kenar çubuğu renkleri kullanın. Atlanan belirteçler varsayılanları kullanır. 5. Teslimattan önce JSON sözdizimini, Şemayı, dosya boyutlarını ve varlık yollarını kontrol edin; gerçekte doğrulanmamış herhangi bir şeyi tanımlayın. Temayı yeniden yüklemek ve seçmek için çıktı yollarını ve talimatları sağlayın. Yalnızca temayı oluşturun; uygulama kaynak kodunu veya diğer ayarları değiştirmeyin.',
+  'app.theme.diy.gradient': 'Örneğin arka planı, karşılık gelen yüzey belirteçlerini geçersiz kılan degradeleri ve yarı saydam yüzeyleri tanımlar. Degradeler görüntülerin üzerinde durur: orijinal görüntüyü görmek için arka planı kaldırın veya yarı saydam degrade renkleri kullanın. Kırpmayı ayarlamak için zemin.imagePosition\'ı [50, 25] olarak ayarlayın.',
+  'app.theme.diy.image': 'Görseller isteğe bağlıdır: birini temanın varlıklar klasörüne yerleştirin ve aşağıdaki alanı JSON üst düzeyinde, belirteçlerin yanına, ayırıcı virgülle ekleyin. PNG, JPEG, WebP ve AVIF, 8 MiB\'ye kadar desteklenir. / ile göreli yolları kullanın; mutlak yollara, .. ve sembolik bağlantılara izin verilmez.',
+  'app.theme.diy.install': 'Yeni temanızı kullanın',
+  'app.theme.diy.installHint': 'Oluşturulan tema klasörünü “Temalar klasörünü aç” ile gösterilen konuma yerleştirin, ardından “Yeniden Yükle”ye tıklayın ve yeni temanızı seçin.',
+  'app.theme.diy.intro': 'Oluşturma kılavuzunu bir yapay zekaya gönderin, ardından tercih ettiğiniz stili tanımlayın veya bir referans görseli paylaşın. Kılavuz, tema kurallarını ve eksiksiz bir örneği içerir.',
+  'app.theme.diy.recovery': 'theme/folder/theme.json\'u kontrol edin, aramayı temizleyin ve Tüm temalar veya Özel\'i seçin. Atlanan tema mesajlarını ve saha teşhislerini gözden geçirin. Bir temayı kopyalarken kimliği değiştirin. Bir görüntü gizlenmişse degrade opaklığını kontrol edin. Doğru konumu bulmak için “Temalar klasörünü aç” seçeneğini kullanın.',
+  'app.theme.diy.title': 'Özel temalar',
+  'app.theme.diy.validation': 'Sayısal schemaVersion: 1 ve benzersiz bir kimlik kullanın: küçük harfle başlayın, yalnızca küçük harfler, rakamlar ve kısa çizgiler kullanın, en fazla 64 karakter. Sistem veya yerleşik kimlikleri kullanmayın. name, görünen addır; görünüm açık veya koyudur. windowBackground altı basamaklı bir renk gerektirir. JSON, yorum veya sondaki virgül içeremez; theme.json 64 KiB ile sınırlıdır.'
+};

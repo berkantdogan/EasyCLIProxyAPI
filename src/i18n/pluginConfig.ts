@@ -29,9 +29,38 @@ const messages = {
   retry: ['重试', 'Retry', '再試行'],
 } as const;
 
+
+const trMessages: Record<keyof typeof messages, string> = {
+  title: 'Eklenti Ayarları',
+  enabled: 'Bu eklentiyi etkinleştir',
+  enabledHint: 'Eklentinin çalışabilmesi için genel eklenti anahtarının da açık olması gerekir.',
+  priority: 'Öncelik',
+  priorityHint: 'Güvenli tamsayı; varsayılan 0.',
+  fields: 'Eklenti Parametreleri',
+  fieldsHint: 'Yalnızca değiştirilen ayarlar kaydedilir. Bir alanın temizlenmesi ayarı kaldırır ve eklenti varsayılanına döner.',
+  inherit: 'Tanımlanmamış / Varsayılan',
+  raw: 'Özel Yapılandırma (JSON)',
+  rawHint: 'Eklenti yapılandırma alanları bildirmedi. Buradan JSON nesnesini düzenleyebilirsiniz; durum ve öncelik yukarıdaki kontrollerle ayarlanır.',
+  invalid_priority: 'Lütfen geçerli ve güvenli bir tamsayı girin.',
+  invalid_integer: 'Lütfen geçerli ve güvenli bir tamsayı girin.',
+  invalid_number: 'Lütfen sonlu bir sayı girin.',
+  invalid_enum: 'Lütfen eklenti tarafından bildirilen seçeneklerden birini seçin.',
+  invalid_json: 'Geçersiz JSON formatı.',
+  expected_array: 'Lütfen bir JSON dizisi girin.',
+  expected_object: 'Lütfen bir JSON nesnesi girin.',
+  reserved: 'enabled ve priority değerlerini yukarıdaki kontrollerden değiştirin.',
+  invalid: 'Lütfen işaretli yapılandırma alanlarını düzeltin.',
+  unsaved: 'Kaydedilmemiş değişiklikler var.',
+  keepEditing: 'Düzenlemeye devam et',
+  discard: 'Değişiklikleri at',
+  loadFailed: 'Eklenti yapılandırması yüklenemedi',
+  saveFailed: 'Eklenti yapılandırması kaydedilemedi',
+  retry: 'Yeniden Dene',
+};
+
 export type PluginConfigMessage = keyof typeof messages;
 
 export function pluginConfigText(key: PluginConfigMessage, locale: AppLocale = getCurrentLocale()): string {
-  const value = messages[key][locale === 'en' ? 1 : locale === 'ja' ? 2 : 0];
+  const value = locale === 'tr' ? trMessages[key] : messages[key][locale === 'en' ? 1 : locale === 'ja' ? 2 : 0];
   return locale === 'zh-TW' ? createTraditionalMessages({ text: value }).text : value;
 }

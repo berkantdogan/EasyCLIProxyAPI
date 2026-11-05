@@ -31,8 +31,39 @@ const messages = {
   expires: ['链接有效期至', 'Link expires at', 'リンクの有効期限'],
 } as const;
 
+
+const trMessages: Record<keyof typeof messages, string> = {
+  title: 'Eklenti Girişi',
+  providerTitle: '{name} OAuth',
+  providerHint: 'Bu eklenti aracılığıyla giriş yapın ve hesap kimlik bilgilerini kaydedin.',
+  loadFailed: 'Eklenti giriş seçenekleri yüklenemedi. Lütfen sayfayı yenileyip tekrar deneyin.',
+  starting: 'Giriş bağlantısı alınıyor…',
+  waiting: 'Yetkilendirme bekleniyor…',
+  success: 'Yetkilendirme tamamlandı, kimlik bilgileri kaydedildi.',
+  failed: 'Yetkilendirme başarısız oldu. Lütfen tekrar deneyin.',
+  expired: 'Giriş süresi doldu. Lütfen yeni bir bağlantı oluşturun.',
+  unavailable: 'Giriş kullanılamıyor. Eklentinin etkinleştirildiğinden emin olun.',
+  missingState: 'Çekirdek bir oturum durumu döndürmedi, yetkilendirme doğrulanamıyor.',
+  invalidUrl: 'Geçersiz giriş bağlantısı.',
+  link: 'Giriş bağlantısı',
+  open: 'Tarayıcıda Aç',
+  copy: 'Bağlantıyı Kopyala',
+  copied: 'Kopyalandı.',
+  code: 'Cihaz doğrulama kodu',
+  copyCode: 'Kodu Kopyala',
+  deviceHint: 'Giriş bağlantısını açın ve yetkilendirmeyi tamamlamak için bu kodu girin.',
+  callback: 'Geri dönüş adresi',
+  callbackHint: 'Tarayıcı yetkilendirmeyi otomatik tamamlamazsa adres çubuğundaki geri dönüş adresini yapıştırın.',
+  callbackInvalid: 'Lütfen geçerli state ile code veya error içeren geri dönüş adresini girin.',
+  submit: 'Geri Dönüşü Gönder',
+  submitting: 'Gönderiliyor…',
+  submitted: 'Geri dönüş gönderildi, yetkilendirme sonucu bekleniyor.',
+  retry: 'Yeniden Giriş Yap',
+  expires: 'Bağlantı geçerlilik süresi',
+};
+
 export type PluginOAuthMessage = keyof typeof messages;
 export function pluginOAuthText(key: PluginOAuthMessage, locale: AppLocale = getCurrentLocale()): string {
-  const value = messages[key][locale === 'en' ? 1 : locale === 'ja' ? 2 : 0];
+  const value = locale === 'tr' ? trMessages[key] : messages[key][locale === 'en' ? 1 : locale === 'ja' ? 2 : 0];
   return locale === 'zh-TW' ? createTraditionalMessages({ text: value }).text : value;
 }
