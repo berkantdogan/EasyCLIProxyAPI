@@ -16,6 +16,8 @@ agent_docs/
 misc/
 
 /EasyCLIProxyAPI.exe
+/EasyCLIProxyAPI.old.exe
+/EasyCLIProxyAPI-Windows-TR-artifact.zip
 /config.toml
 /agent-usage/
 /oauth/
