@@ -54,7 +54,7 @@ const messages = {
   modelHint: ['字段关闭时保留默认行为；已启用字段中的 false、0 和空列表会明确覆盖默认值。', 'Unset fields use defaults; explicit false, 0 and empty lists override defaults.', '未設定は既定動作。false、0、空のリストは既定値を明示的に上書きします。'],
 } as const;
 
-const trMessages: Partial<Record<keyof typeof messages, string>> = {
+const trMessages: Record<keyof typeof messages, string> = {
   modelRules: 'Model kuralları',
   connectionRouting: 'Bağlantı ve yönlendirme',
   requestBehavior: 'İstek davranışı',
@@ -81,6 +81,30 @@ const trMessages: Partial<Record<keyof typeof messages, string>> = {
   noCloak: 'Codex istek gizlemesini devre dışı bırak',
   fingerprint: 'İstek parmak izi',
   caller: 'Arayan parmak izini koru',
+  errorsHint: 'HTTP durum kodu ve gövde kalıplarıyla eşleştirin. Boş bir liste devralınan kuralları temizler.',
+  match: 'Gövde şunları içerir (her satıra bir tane)',
+  regex: 'Düzenli ifadeler (Regex - her satıra bir tane)',
+  action: 'İşlem',
+  stop: 'Hata döndür, soğutma yapma',
+  'stop-and-cooldown': 'Hata döndür ve soğutmaya al',
+  continue: 'Sonraki kimlik bilgisini dene, soğutma yapma',
+  'continue-and-cooldown': 'Sonraki kimlik bilgisini dene ve soğutmaya al',
+  force: 'Yanıt model adını takma ada geri eşle',
+  configuration: 'configuration_update desteği',
+  imageHint: 'Yalnızca /v1/images/* içindir; sohbet görsel girişi giriş kipleri tarafından denetlenir.',
+  input: 'Giriş kipleri',
+  output: 'Çıkış kipleri',
+  completion: 'max_completion_tokens kullan',
+  zero: 'Sıfır bütçeye izin ver',
+  dynamic: 'Dinamik bütçeye izin ver',
+  linesHint: 'Her satıra bir tane; etkin bırakılan boş alan boş liste anlamına gelir.',
+  headersHint: '$ ile başlayan değerler alt akış isteğindeki aynı adlı başlığı kopyalar (örn. $X-Session).',
+  alpha: 'Alpha Search özelliğini etkinleştir',
+  rebuild: 'Görüşme ortasındaki system mesajlarını sistem istemine taşı',
+  cch: 'Eski CCH imza uyumluluk alanı',
+  deprecated: 'Kullanımdan kaldırıldı; güncel çekirdekler CCH imzalarını otomatik üretir.',
+  invalid: 'Yapılandırma değeri geçersiz; işaretli alanı kontrol edin: ',
+  modelHint: 'Ayarlanmamış alanlar varsayılanları kullanır; açıkça belirtilen false, 0 ve boş listeler varsayılanları geçersiz kılar.',
 };
 
 export type ProviderTemplateMessage = keyof typeof messages;
