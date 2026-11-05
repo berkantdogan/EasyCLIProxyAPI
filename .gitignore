@@ -20,4 +20,5 @@ misc/
 /agent-usage/
 /oauth/
 /usage-records/
+/theme-selection.json
 package-lock.json

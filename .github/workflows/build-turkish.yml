@@ -1,0 +1,85 @@
+name: Build Windows Turkish Release
+
+on:
+  push:
+    branches:
+      - feat/turkish-locale
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-windows:
+    name: Build Windows Portable App
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.2.4
+
+      - name: Set up Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Build Web Frontend
+        run: bun run build
+
+      - name: Build Tauri Binary
+        run: bun tauri build --no-bundle
+
+      - name: Prepare Portable Directory
+        run: >-
+          node scripts/portable.mjs
+          --binary "src-tauri/target/release/cpa-gui.exe"
+          --output "release/EasyCLIProxyAPI"
+          --os "windows"
+          --arch "amd64"
+          --download true
+        shell: bash
+
+      - name: Set default Turkish locale in config.toml
+        shell: pwsh
+        run: |
+          if (Test-Path "release/EasyCLIProxyAPI/config.toml") {
+            (Get-Content "release/EasyCLIProxyAPI/config.toml") -replace 'locale\s*=\s*"[^"]*"', 'locale = "tr"' | Set-Content "release/EasyCLIProxyAPI/config.toml"
+          }
+
+      - name: Archive Windows Release
+        shell: pwsh
+        run: |
+          Compress-Archive -Path "release/EasyCLIProxyAPI/*" -DestinationPath "EasyCLIProxyAPI-Windows-TR.zip"
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: EasyCLIProxyAPI-Windows-TR
+          path: EasyCLIProxyAPI-Windows-TR.zip
+          retention-days: 14
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/') || github.event_name == 'workflow_dispatch' || github.ref == 'refs/heads/feat/turkish-locale'
+        with:
+          tag_name: v0.3.76-tr
+          name: EasyCLIProxyAPI v0.3.76 - Türkçe Dil Desteği
+          body: |
+            ### EasyCLIProxyAPI Türkçe Sürüm (v0.3.76-tr)
+            
+            Bu sürüm eksiksiz Türkçe dil desteği ile derlenmiştir:
+            - 2.767 arayüz anahtarının tamamı Türkçeleştirildi.
+            - Sistem tepsisi (tray menu) ve bildirimler Türkçe olarak uyarlandı.
+            - Başlangıç dili Türkçe (`tr`) olarak yapılandırıldı.
+            
+            **Kurulum:**
+            1. `EasyCLIProxyAPI-Windows-TR.zip` dosyasını indirin.
+            2. Arşivi bir klasöre çıkartın.
+            3. `EasyCLIProxyAPI.exe` dosyasını çalıştırın.
+          files: EasyCLIProxyAPI-Windows-TR.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
