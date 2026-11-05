@@ -125,6 +125,113 @@ const messages = {
 
 export type McpSkillsMessageKey = keyof typeof messages;
 
+export const trMcpSkillsMessages: Record<McpSkillsMessageKey, string> = {
+  title: 'MCP ve Beceriler',
+  description: 'Aracılara araç ve bağlam yetenekleri sağlamak için MCP sunucularını ve beceri uzantılarını yönetin.',
+  tabMcp: 'MCP Sunucuları',
+  tabSkills: 'Beceriler',
+  import: 'İçe Aktar',
+  export: 'Dışa Aktar',
+  openFolder: 'Dizini Aç',
+  more: 'Daha Fazla',
+  addServer: 'Sunucu Ekle',
+  edit: 'Düzenle',
+  duplicate: 'Yapılandırmayı Çoğalt',
+  delete: 'Sil',
+  confirmDelete: 'Silmeyi Onayla',
+  cancel: 'İptal',
+  save: 'Kaydet',
+  saving: 'Kaydediliyor…',
+  copy: 'Kopyala',
+  copied: 'Kopyalandı',
+  copyPath: 'Yolu Kopyala',
+  copiedPath: 'Yol Kopyalandı',
+  all: 'Tümü',
+  enabled: 'Etkin',
+  disabled: 'Devre Dışı',
+  enabledOnly: 'Yalnızca Etkinleri Göster',
+  stdio: 'stdio',
+  http: 'http',
+  sse: 'sse',
+  sourceOpenClaw: 'OpenClaw',
+  sourceWorkshop: 'Atölye',
+  sourceProject: 'Proje',
+  sourceCustom: 'Özel',
+  searchServersPlaceholder: 'Sunucu adı veya komut ile ara…',
+  serverCount: '{count} / {total} sunucu gösteriliyor',
+  noServers: 'MCP Sunucusu Yok',
+  noServersHint: 'Aracı araç yeteneklerini genişletmek için standart G/Ç (stdio) veya HTTP/SSE protokolü MCP sunucuları ekleyin.',
+  noSearchResults: 'Eşleşen sunucu bulunamadı',
+  noSearchResultsHint: 'Arama terimlerinizi ayarlamayı veya filtreleri sıfırlamayı deneyin.',
+  resetFilters: 'Filtreleri Sıfırla',
+  selectServerHint: 'Ayrıntıları görüntülemek için sol listeden bir MCP sunucusu seçin veya yeni bir sunucu ekleyin.',
+  serverDetails: 'Sunucu Ayrıntıları',
+  transport: 'İletim Protokolü',
+  command: 'Başlatma Komutu',
+  args: 'Çalıştırma Bağımsız Değişkenleri',
+  env: 'Ortam Değişkenleri',
+  url: 'Sunucu URL\'si',
+  headers: 'İstek Başlıkları',
+  serverDescription: 'Açıklama',
+  noDescription: 'Açıklama yok',
+  rawJson: 'Ham JSON Yapılandırması',
+  copyJson: 'JSON Kopyala',
+  searchSkillsPlaceholder: 'Beceri adı veya açıklamasıyla ara…',
+  skillsCount: '{count} / {total} beceri gösteriliyor',
+  noSkills: 'Kullanılabilir beceri bulunamadı',
+  noSkillsHint: 'Becerilerin kullanılabilir olması için beceri klasörlerini skills dizinine yerleştirin; çekirdek otomatik olarak tanıyacaktır.',
+  noSkillSearchResults: 'Eşleşen beceri bulunamadı',
+  noSkillSearchResultsHint: 'Arama anahtar kelimelerini veya filtreleri değiştirmeyi deneyin.',
+  filesCount: '{count} dosya',
+  skillDetail: 'Beceri Açıklaması (SKILL.md)',
+  skillDetailEmpty: 'Bu beceri için açıklama belgesi bulunamadı (SKILL.md boş).',
+  loadingSkill: 'Beceri belgeleri yükleniyor…',
+  path: 'Yol',
+  close: 'Kapat',
+  addTitle: 'Yeni MCP Sunucusu Ekle',
+  editTitle: 'MCP Sunucusunu Düzenle',
+  serverName: 'Sunucu Adı',
+  serverNamePlaceholder: 'Örn: filesystem veya github',
+  nameRequired: 'Sunucu adı boş olamaz',
+  nameDuplicate: 'Bu isimde bir sunucu zaten mevcut',
+  transportStdio: 'Standart G/Ç (stdio)',
+  transportHttp: 'HTTP (Streamable)',
+  transportSse: 'Server-Sent Events (SSE)',
+  commandRequired: 'stdio iletim protokolü için bir başlatma komutu gereklidir',
+  commandPlaceholder: 'Örn: npx veya uvx',
+  argsLabel: 'Çalıştırma Bağımsız Değişkenleri',
+  argsHint: 'Her satıra bir argüman girin; başlatma sırasında sırayla iletilir',
+  argsPlaceholder: '-y\n@modelcontextprotocol/server-filesystem\n/path/to/dir',
+  urlRequired: 'HTTP/SSE protokolü için geçerli bir hizmet adresi gereklidir',
+  urlInvalid: 'Lütfen geçerli bir HTTP veya HTTPS URL\'si girin',
+  urlPlaceholder: 'http://localhost:8000/sse',
+  addEnv: 'Ortam Değişkeni Ekle',
+  addHeader: 'Başlık Ekle',
+  keyPlaceholder: 'Anahtar (Key)',
+  valuePlaceholder: 'Değer (Value)',
+  descriptionPlaceholder: 'İsteğe bağlı: bu sunucunun kısa işlev açıklaması',
+  enableOnSave: 'Kaydettikten sonra bu sunucuyu etkinleştir',
+  importTitle: 'MCP Sunucu Yapılandırmasını İçe Aktar',
+  importHint: 'MCP sunucularının JSON yapılandırmasını yapıştırın. Claude Desktop biçim nesnelerini ("mcpServers" içeren) veya sunucu dizilerini destekler.',
+  importAction: 'İçe Aktarımı Onayla',
+  importResult: 'İçe Aktarma Sonucu',
+  importSummary: '{added} eklendi, {updated} güncellendi, {skipped} atlandı.',
+  importErrors: 'Hata listesi:',
+  invalidJson: 'Geçersiz JSON biçimi, lütfen sözdizimini kontrol edin.',
+  backendNotReady: 'Arka uç hizmeti henüz hazır değil veya komutlar uygulanmadı. Sayfa önizleme durumunda gösteriliyor.',
+  serverSaved: 'Sunucu başarıyla kaydedildi',
+  serverDeleted: 'Sunucu başarıyla silindi',
+  toggleFailed: 'Etkinleştirme durumu güncellenemedi',
+  exportFailed: 'Yapılandırma dışa aktarılamadı',
+  openFolderFailed: 'Beceriler ve sunucular dizini açılamadı',
+  loadFailed: 'Veriler yüklenemedi',
+  deleteConfirmTitle: '"{name}" sunucusunu silmek istediğinizden emin misiniz?',
+  deleteConfirmDesc: 'Bu işlem bu sunucuyu yapılandırmadan kalıcı olarak kaldıracaktır.',
+  none: 'Yok',
+  retry: 'Yeniden Dene',
+};
+
+
 export function mcpSkillsText(
   key: McpSkillsMessageKey,
   locale: AppLocale = getCurrentLocale(),
@@ -132,7 +239,16 @@ export function mcpSkillsText(
 ): string {
   const item = messages[key];
   if (!item) return key;
-  let text: string = item[locale === 'en' ? 1 : locale === 'ja' ? 2 : 0];
+  let text: string;
+  if (locale === 'tr') {
+    text = trMcpSkillsMessages[key] ?? item[1];
+  } else if (locale === 'en') {
+    text = item[1];
+  } else if (locale === 'ja') {
+    text = item[2];
+  } else {
+    text = item[0];
+  }
   if (locale === 'zh-TW') {
     text = createTraditionalMessages({ text }).text;
   }

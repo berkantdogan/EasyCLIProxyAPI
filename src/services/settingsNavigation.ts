@@ -79,6 +79,11 @@ export const settingsMessages = {
     'Core hardening is not yet active. Please check core configuration.',
     'コア保護がまだ有効になっていません。コアの設定を確認してください。'
   ),
+  reverseProxySecurityWarning: text(
+    '内核必须绑定到 127.0.0.1，设置 trusted-proxies，并且 allow-remote: false。',
+    'Core must bind to 127.0.0.1, set trusted-proxies, and keep allow-remote: false.',
+    'コアは 127.0.0.1 にバインドし、trusted-proxies を設定し、allow-remote: false を維持する必要があります。'
+  ),
   reverseProxyListenHost: text('监听地址', 'Listen host', 'リッスンホスト'),
   reverseProxyListenHostHint: text('反向代理监听绑定的主机地址，默认 0.0.0.0', 'Host address the reverse proxy listens on, default 0.0.0.0', 'リバースプロキシが待ち受けるホストアドレス（デフォルト: 0.0.0.0）'),
   reverseProxyListenPort: text('监听端口', 'Listen port', 'リッスンポート'),
